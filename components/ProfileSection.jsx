@@ -48,22 +48,32 @@ export default function ProfileSection({ user, navigation }) {
               Reviews
             </Text>
           </View>
-          <View className="-space-y-1 text-center">
+          <Pressable
+            className="-space-y-1 text-center"
+            onPress={() =>
+              navigation.navigate("Followers", { username: user?.username })
+            }
+          >
             <Text className="text-white text-[16px] text-center">
               {followers?.length}
             </Text>
             <Text className="text-white text-[16px] font-semibold text-center">
               Followers
             </Text>
-          </View>
-          <View className="-space-y-1 text-center">
+          </Pressable>
+          <Pressable
+            className="-space-y-1 text-center"
+            onPress={() =>
+              navigation.navigate("Following", { username: user?.username })
+            }
+          >
             <Text className="text-white text-[16px] text-center">
               {user?.following.length}
             </Text>
             <Text className="text-white text-[16px] font-semibold text-center">
               Following
             </Text>
-          </View>
+          </Pressable>
         </View>
       </View>
       <View>
@@ -91,7 +101,7 @@ export default function ProfileSection({ user, navigation }) {
           onPress={followUser}
         >
           <Text className="text-white text-[16px] font-semibold text-center">
-            Unfollow
+            Following
           </Text>
         </Pressable>
       ) : (

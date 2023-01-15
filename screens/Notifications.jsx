@@ -57,13 +57,8 @@ export default function Notifications({ navigation }) {
   return (
     <FlatList
       className="bg-primary"
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          tintColor="#fff"
-        />
-      }
+      refreshing={refreshing}
+      onRefresh={onRefresh}
       data={notifications && notifications?.results}
       renderItem={({ item }) => (
         <Notification notification={item} navigation={navigation} />

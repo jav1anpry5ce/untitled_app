@@ -1,4 +1,4 @@
-import { RefreshControl, FlatList } from "react-native";
+import { RefreshControl, FlatList, View } from "react-native";
 import { useState, useCallback, useEffect } from "react";
 import { Post } from "../components";
 import { useGetPostsQuery, endpoints } from "../store/services/api";
@@ -11,12 +11,13 @@ export default function Home({ navigation }) {
   const [posts, setPosts] = useState(null);
   const { data, error, isLoading } = useGetPostsQuery(token);
 
-  const onRefresh = useCallback(async () => {
+  const onRefresh = async () => {
     setRefreshing(true);
     const { data } = await dispatch(endpoints.getPosts.initiate(token));
+    setPosts([]);
     setPosts(data);
     setRefreshing(false);
-  }, []);
+  };
 
   const onEndReached = useCallback(async () => {
     if (posts?.next) {
@@ -43,13 +44,8 @@ export default function Home({ navigation }) {
   return (
     <FlatList
       className="bg-primary pt-2"
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          tintColor={"#fff"}
-        />
-      }
+      onRefresh={onRefresh}
+      refreshing={refreshing}
       data={posts?.results}
       renderItem={({ item }) => <Post data={item} navigation={navigation} />}
       keyExtractor={(item) => item.id.toString()}

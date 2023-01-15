@@ -11,7 +11,8 @@ export default function Notification({ notification, navigation }) {
       <Pressable onPress={() => navigateToUser(notification?.user.username)}>
         <Image
           source={{
-            uri: "http://10.0.0.233:8000/" + notification?.user.profile_photo,
+            uri:
+              "http://192.168.1.182:8000/" + notification?.user.profile_photo,
           }}
           className="w-[40px] aspect-square rounded-full"
         />

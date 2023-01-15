@@ -40,7 +40,7 @@ export default function Search({ navigation }) {
     }
   };
 
-  const debouncedSearch = useCallback(debounce(searchUsers, 150), []);
+  const debouncedSearch = useCallback(debounce(searchUsers, 500), []);
 
   return (
     <View className="bg-primary px-2 h-full">

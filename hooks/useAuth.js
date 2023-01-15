@@ -15,7 +15,7 @@ export default function useAuth() {
 
   const login = async (data) => {
     axios
-      .post("http://10.0.0.233:8000/api/login/", data, {
+      .post("http://192.168.1.182:8000/api/login/", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,7 +30,7 @@ export default function useAuth() {
 
   const register = async (data) => {
     axios
-      .post("http://10.0.0.233:8000/api/register/", data, {
+      .post("http://192.168.1.182:8000/api/register/", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,7 +40,7 @@ export default function useAuth() {
 
   const getCurrentUser = async () => {
     try {
-      const res = await axios.get("http://10.0.0.233:8000/api/user", {
+      const res = await axios.get("http://192.168.1.182:8000/api/user", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -55,7 +55,7 @@ export default function useAuth() {
 
   const logout = async () => {
     const res = await axios.post(
-      "http://10.0.0.233:8000/api/logout/",
+      "http://192.168.1.182:8000/api/logout/",
       {},
       {
         headers: {

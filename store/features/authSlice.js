@@ -6,11 +6,15 @@ export const login = createAsyncThunk(
   "auth/login",
   async (data, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://10.0.0.233:8000/api/login/", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(
+        "http://192.168.1.182:8000/api/login/",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       await AsyncStorage.setItem("token", res.data.token);
       return res.data;
     } catch (error) {
@@ -24,7 +28,7 @@ export const register = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://10.0.0.233:8000/api/register/",
+        "http://192.168.1.182:8000/api/register/",
         data,
         {
           headers: {
@@ -44,7 +48,7 @@ export const getCurrentUser = createAsyncThunk(
   async () => {
     const token = await AsyncStorage.getItem("token");
     try {
-      const res = await axios.get("http://10.0.0.233:8000/api/user", {
+      const res = await axios.get("http://192.168.1.182:8000/api/user", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -61,7 +65,7 @@ export const getCurrentUser = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async () => {
   const token = await AsyncStorage.getItem("token");
   const res = await axios.post(
-    "http://10.0.0.233:8000/api/logout/",
+    "http://192.168.1.182:8000/api/logout/",
     {},
     {
       headers: {

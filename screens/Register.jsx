@@ -27,7 +27,11 @@ export default function Register({ navigation }) {
       password,
       confirmPassword,
     };
-    dispatch(register(data));
+    dispatch(register(data)).then((data) => {
+      if (data?.meta.requestStatus === "fulfilled") {
+        navigation.navigate("Login");
+      }
+    });
   };
 
   return (

@@ -3,15 +3,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://10.0.0.233:8000/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.1.182:8000/api" }),
   prepareHeaders: (headers, { getState }) => {
     headers.set("Access-Control-Allow-Origin", "*");
     headers.set("Content-Type", "application/json");
     return headers;
   },
-  refetchOnMountOrArgChange: true,
-  refetchOnFocus: true,
   refetchOnReconnect: true,
+  refetchOnFocus: true,
+  refetchOnMountOrArgChange: true,
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: (token) => ({

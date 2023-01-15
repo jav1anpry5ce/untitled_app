@@ -2,7 +2,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Pressable, Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TabNavigation from "./TabNavigation";
-import { EditProfile, Notifications, Settings, User } from "../screens";
+import {
+  EditProfile,
+  Notifications,
+  Settings,
+  User,
+  Followers,
+  Following,
+} from "../screens";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Platform } from "react-native";
 
@@ -74,6 +81,8 @@ export default function StackNavigation() {
         }}
       />
       <Stack.Screen name="Edit Profile" component={EditProfile} />
+      <Stack.Screen name="Followers" component={Followers} />
+      <Stack.Screen name="Following" component={Following} />
     </Stack.Navigator>
   );
 }

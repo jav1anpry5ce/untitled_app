@@ -9,3 +9,5 @@ export { default as Profile } from "./Profile";
 export { default as User } from "./User";
 export { default as Register } from "./Register";
 export { default as EditProfile } from "./EditProfile";
+export { default as Followers } from "./Followers";
+export { default as Following } from "./Following";
